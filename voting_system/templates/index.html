@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital India Voting System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Teko:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/download.png" alt="India Emblem" class="emblem">
+                <h1>Digital India <span>Blockchain Voting</span></h1>
+            </div>
+            <div class="logout-container">
+                <span class="aadhaar-info">Aadhaar: {{ session.aadhaar_number[:4] }}****{{ session.aadhaar_number[-4:] }}</span>
+                <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="voting-card">
+                <div class="card-header">
+                    <img src="/static/images/vote.jpeg" alt="Vote Icon" class="vote-icon">
+                    <h2>Cast Your Vote Securely</h2>
+                    <p>Your vote is encrypted and recorded on the blockchain</p>
+                </div>
+                
+                <form action="/vote" method="post" class="vote-form">
+                    <div class="candidates-list">
+                        {% for candidate in candidates %}
+                        <div class="candidate-option">
+                            <input type="radio" id="{{ candidate }}" name="candidate" value="{{ candidate }}" required>
+                            <label for="{{ candidate }}">
+                                <span class="radio-btn"></span>
+                                <span class="candidate-name">{{ candidate }}</span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <button type="submit" class="submit-vote">
+                        <i class="fas fa-lock"></i> Submit Secure Vote
+                    </button>
+                </form>
+            </div>
+
+            <div class="results-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-bar"></i> Current Election Results</h2>
+                </div>
+                <div class="results-list">
+                    {% for candidate, votes in candidates.items() %}
+                    <div class="result-item">
+                        <span class="candidate-name">{{ candidate }}</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: {{ (votes / (candidates.values()|sum or 1)) * 100 }}%"></div>
+                        </div>
+                        <span class="vote-count">{{ votes }} votes</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blockchain-info-section">
+        <div class="container">
+            <div class="info-card">
+                <h3><i class="fas fa-link"></i> Blockchain Information</h3>
+                <p>Number of blocks in chain: {{ chain|length }}</p>
+                <a href="/chain" class="view-chain-btn">View Full Blockchain</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/static/images/download.png" alt="India Emblem">
+                    <span>Digital India Initiative</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="#"><i class="fas fa-lock"></i> Security</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Election Commission of India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

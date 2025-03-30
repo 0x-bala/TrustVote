@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadhaar Verification | Digital India Voting</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Teko:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="aadhaar-page">
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="/static/images/download.png" alt="India Emblem" class="emblem">
+                <h1>Digital India <span>Blockchain Voting</span></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="aadhaar-container">
+        <div class="aadhaar-card">
+            <div class="card-header">
+                <img src="/static/images/download.png" alt="Aadhaar Icon" class="aadhaar-icon">
+                <h2>Aadhaar Verification</h2>
+                <p>Please enter your 12-digit Aadhaar number to verify your identity</p>
+            </div>
+            
+            {% if error %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+            </div>
+            {% endif %}
+            
+            <form action="/aadhaar" method="post" class="aadhaar-form">
+                <div class="form-group">
+                    <label for="aadhaar_number"><i class="fas fa-id-card"></i> Aadhaar Number</label>
+                    <input type="text" id="aadhaar_number" name="aadhaar_number" 
+                           pattern="\d{12}" title="12 digit Aadhaar number" required
+                           placeholder="Enter 12-digit Aadhaar number">
+                </div>
+                
+                <button type="submit" class="verify-btn">
+                    <i class="fas fa-check-circle"></i> Verify & Continue
+                </button>
+            </form>
+            
+            <div class="security-note">
+                <i class="fas fa-shield-alt"></i>
+                <p>Your Aadhaar information is securely hashed and never stored in plain text</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="simple-footer">
+        <div class="container">
+            <p>© 2025 Election Commission of India. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

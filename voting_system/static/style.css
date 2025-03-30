@@ -1,0 +1,467 @@
+/* Base Styles */
+:root {
+    --saffron: #FF9933;
+    --white: #FFFFFF;
+    --green: #138808;
+    --navy: #000080;
+    --light-blue: #E2F1FF;
+    --dark-gray: #333333;
+    --medium-gray: #666666;
+    --light-gray: #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: 'Teko', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--saffron) 100%);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.emblem {
+    height: 50px;
+    width: auto;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.logo h1 span {
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.logout-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.aadhaar-info {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.logout-btn {
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logout-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Main Content Styles */
+.main-content {
+    padding: 2rem 0;
+}
+
+.voting-card, .results-card, .info-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--green) 100%);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-header p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.vote-icon, .aadhaar-icon {
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+/* Voting Form Styles */
+.vote-form {
+    padding: 2rem;
+}
+
+.candidates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.candidate-option {
+    display: flex;
+    align-items: center;
+}
+
+.candidate-option input[type="radio"] {
+    display: none;
+}
+
+.candidate-option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background: var(--light-gray);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.candidate-option label:hover {
+    background: #e0e0e0;
+}
+
+.radio-btn {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--medium-gray);
+    border-radius: 50%;
+    position: relative;
+}
+
+.candidate-option input[type="radio"]:checked + label .radio-btn {
+    border-color: var(--green);
+}
+
+.candidate-option input[type="radio"]:checked + label .radio-btn::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--green);
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+}
+
+.candidate-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.submit-vote {
+    background: linear-gradient(135deg, var(--green) 0%, var(--navy) 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.submit-vote:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Results Styles */
+.results-list {
+    padding: 1.5rem;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 10px;
+    background: var(--light-gray);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--saffron), var(--green));
+    border-radius: 5px;
+}
+
+.vote-count {
+    font-weight: 600;
+    color: var(--navy);
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Blockchain Info Section */
+.blockchain-info-section {
+    background: var(--light-blue);
+    padding: 2rem 0;
+}
+
+.info-card {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.info-card h3 {
+    color: var(--navy);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info-card p {
+    margin-bottom: 1.5rem;
+}
+
+.view-chain-btn {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.view-chain-btn:hover {
+    background: var(--saffron);
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(135deg, var(--navy) 0%, #00005a 100%);
+    color: white;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo img {
+    height: 40px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-links a:hover {
+    color: var(--saffron);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Aadhaar Page Specific Styles */
+.aadhaar-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.aadhaar-page .header {
+    flex-shrink: 0;
+}
+
+.aadhaar-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.aadhaar-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.aadhaar-form {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--navy);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--saffron);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.2);
+}
+
+.verify-btn {
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--green) 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.verify-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.error-message {
+    background: #FFEBEE;
+    color: #C62828;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin: 0 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.security-note {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 12px 15px;
+    margin: 2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.simple-footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: var(--navy);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .logout-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
